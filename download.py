@@ -107,6 +107,6 @@ def read_sheet(url:string, sheet, opendoc_params, cookie_data:user_data):
 
 def read_callback(text):
     content = re.search(r"clientVarsCallback\(\"(.+)\"\)", text).group(1)
+    content = content.replace(r'\\', '\\')
     content = content.replace("&#34;", "\"")
-    content = content.replace(r'\\"', r"\\'")
     return json.loads(content)
